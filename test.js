@@ -1,10 +1,13 @@
 const test = document.getElementById("test")
+const test1 = document.getElementById("test1")
 const search = document.getElementById("search")
 
 let isLoaded = false
 let max = 9
 let pendingMsg = `Wait A Second`
 let nime = []
+let nime0 = []
+let nime1 = []
 let apiUrl
 
 
@@ -34,6 +37,20 @@ const getData = (link) => {
         .then(response => response.json())
         .then(data => {
             data.content.forEach((c) => {
+                nime0.push({
+                    id: c.id,
+                    name: c.name,
+                    age: c.age,
+                    gender: c.gender,
+                    race: c.race,
+                    aff_id: c.affiliation_id,
+                    arc_id: c.arc_id
+                })
+                nime1.push({
+                    description: c.description,
+                    image: c.img,
+                    quote: c.quote
+                })
                 nime.push(c)
             })
         })
@@ -46,21 +63,19 @@ for (let i = 1; i <= max; i++) {
     }
 }
 setInterval(() => {
-    while (test.innerHTML == '' || test.innerHTML == pendingMsg) {
-        test.innerHTML == pendingMsg
+    while (test.innerHTML == '') {
         takeData(nime)
     }
-    return
 }, 1000)
 search.addEventListener("keyup", (e) => {
     let keyValue = e.target.value
     console.log(keyValue)
-    test.querySelectorAll("div").forEach((el)=>{
+    test.querySelectorAll("div").forEach((el) => {
         console.log(el.innerText.trim())
-        if(el.textContent.trim().toLowerCase().includes(keyValue)){
-            el.style.display='flex'
-        }else{
-            el.style.display='none'
+        if (el.textContent.trim().toLowerCase().includes(keyValue)) {
+            el.style.display = 'flex'
+        } else {
+            el.style.display = 'none'
         }
     })
 })
