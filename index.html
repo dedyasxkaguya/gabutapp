@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+    <link rel="stylesheet" href="./style/style.css">
 </head>
 
 <body>
-    <input type="text" id="search" class="m-4 border border-neutral-400">Cari pokonya
-    <div id="test" class="flex flex-col"></div>
+    <nav class="w-full p-5">Gabut App by dedyas</nav>
+    <div id="main" class="w-full flex justify-center items-center flex-col">
+        <input type="text" id="search" class="font-light p-4 rounded-full my-5" placeholder="Search your KNY character">
+        <div id="resultBox" class="flex gap-4 flex-col">
+
+        </div>
+    </div>
+
 </body>
 <script src="./script/script.js"></script>
 

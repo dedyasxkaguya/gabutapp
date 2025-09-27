@@ -1,0 +1,55 @@
+:root{
+    --light-blue:#E2F3F4;
+    --dark-blue:#6DC7D1;
+    --light-pink:#FFDAFC;
+    --dark-pink:#F991CC;
+    --low:#000000;
+    --dreamy:#EAEBED;
+}
+nav{
+    background-color: var(--dark-blue);
+}
+#search{
+    background-color: var(--dreamy);
+    width: 75dvw;
+}
+.result{
+    width: 75dvw;
+    height: fit-content;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.imgBoxmale{
+    background-color: var(--dark-blue);
+    overflow: hidden;
+}
+.imgBoxfemale{
+    background-color: var(--dark-pink);
+    overflow: hidden;
+}
+.result img{
+    aspect-ratio: 1/1 !important;
+    height:2rem ;
+    object-fit: contain;
+    position: relative;
+    scale: 2;
+    top:1.2rem;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    filter: drop-shadow(2px 2px 4px);
+}
+.result img:hover{
+    scale: 2.8;
+    transition-delay: .2s;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.male{
+    background-color: var(--light-blue);
+}
+.female{
+    background-color: var(--light-pink);
+}
+.id{
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+}
