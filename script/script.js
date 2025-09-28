@@ -7,36 +7,48 @@ const closeBtn = document.querySelectorAll(".closeBtn")
 const charBox = document.getElementById("charBox")
 const res = document.getElementById("resultBox")
 const search = document.getElementById("search")
+let favChar = []
 let arrName = []
+
+if (localStorage.getItem("favChar")) {
+    favChar = []
+    favChar.push(JSON.parse(localStorage.getItem("favChar")))
+}
 const getDataChar = async (name) => {
     charBox.innerHTML = `
     <div>
     Wait A Second....
     </div>
     `
+    console.log('pending')
+    console.log(`https://demon-slayer-api.onrender.com/v1/${name}`)
     try {
-        fetch(`https://www.demonslayer-api.com/api/v1/characters?name=${name}`)
+        fetch(`https://demon-slayer-api.onrender.com/v1/${name}`)
             .then(response => response.json())
             .then(data => {
-                console.table(data.content)
-                data.content.forEach((char) => {
-                    // swal.fire({
-                    //     icon: "success",
-                    //     title: `${char.name}`
-                    // })
+                console.table(data)
+                data.forEach((char) => {
                     arrName = char.name.split(" ")
-                    let trimName
-                    trimName = ''
+                    let trimName = ''
                     arrName.forEach((name) => {
                         trimName += `${name} <br>`
                     })
+
+                    let realImg = char.image.split('.png/')
+
+                    let realRace = char.race.split(" ")
+
+                    let realAge = char.age.split(" ")
+                    if (realAge[0] == '>') {
+                        realAge.shift()
+                    }
                     charBox.innerHTML = `
       <div class="charBox rounded-4xl">
             <div class="rounded-3xl">
                 <div class="male flex shadow rounded-4xl top ">
-                    <div class="p-4 flex items-center justify-center left">
+                    <div class="flex items-center justify-center left">
                         <img class="p-4 rounded-3xl"
-                            src="${char.img}" alt="">
+                            src="${realImg[0]}.png" alt="">
                     </div>
                     <div class=" flex justify-center items-center right">
                         <div class="m-4 p-4 pe-8 flex flex-col gap-4 rounded-3xl shadow rightBox">
@@ -44,17 +56,19 @@ const getDataChar = async (name) => {
                             ${trimName}
                             </span>
                             <span class="mid foot-semibold">
-                                ${char.race} ${char.gender} ${char.age}
+                                ${realRace[0]} ${char.gender} ${realAge[0]}
                             </span>
                             <div class="bot">
                                 <span>
-                                ${char.description}<br>
+                                Debut at : ${char['anime debut']} <br>
+                                Combat Style : ${char['combat style']} <br>
+                                Affiliation : ${char.affiliation}<br>
                                 </span>
                                 <i class="mt-4 quote text-light">"${char.quote}"</i>
 
                                 </div>
                             <div class="actionBtn flex justify-start gap-4 mt-auto">
-                                <button type="button" class="btnmale p-3 rounded-full shadow-sm">
+                                <button type="button" class="btnmale p-3 rounded-full shadow-sm" onclick='addFav("${char.name}")'>
                                     <i class="bi bi-heart"></i>
                                     <span>
                                         Favorite
@@ -95,6 +109,7 @@ const getDataChar = async (name) => {
 const getData = async () => {
 
     fetch('./data/character.json')
+        // fetch("https://demon-slayer-api.onrender.com/v1/")
         .then(response => response.json())
         .then(data => {
             data.characters.forEach((c) => {
@@ -116,9 +131,8 @@ const getData = async () => {
         })
 }
 getData()
-search.addEventListener("keyup", (e) => {
+search.addEventListener("keydown", (e) => {
     let keyValue = e.target.value
-    console.log(keyValue)
     document.querySelectorAll(".result").forEach((el) => {
         if (el.textContent.trim().toLowerCase().includes(keyValue)) {
             el.style.display = 'flex'
@@ -133,6 +147,10 @@ closeBtn.forEach((btn) => {
         realParent.remove()
     })
 })
+const addFav = (name) => {
+    favChar.push(name)
+    localStorage.setItem("favChar", JSON.stringify(favChar))
+}
 charBox.addEventListener("click", (e) => {
     if (e.target.className.includes('bi-x')) {
         let realParent = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement

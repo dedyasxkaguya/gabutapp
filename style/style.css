@@ -206,7 +206,6 @@ footer .active {
     }
 
     .charBox {
-        min-width: 80dvw;
         width: fit-content;
     }
 
@@ -224,6 +223,9 @@ footer .active {
     .left,
     .right {
         width: 100%;
+    }
+    .rightBox{
+        min-width: 80dvw;
     }
     .actionBtn span{
         display: none;
