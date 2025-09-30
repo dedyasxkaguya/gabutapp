@@ -10,9 +10,9 @@ const search = document.getElementById("search")
 let favChar = []
 let arrName = []
 
-if (localStorage.getItem("favChar")) {
+if (!localStorage.getItem("favChar")=='') {
     favChar = []
-    favChar.push(JSON.parse(localStorage.getItem("favChar")))
+    favChar=JSON.parse(localStorage.getItem("favChar"))
 }
 const getDataChar = async (name) => {
     charBox.innerHTML = `
@@ -38,10 +38,6 @@ const getDataChar = async (name) => {
 
                     let realRace = char.race.split(" ")
 
-                    let realAge = char.age.split(" ")
-                    if (realAge[0] == '>') {
-                        realAge.shift()
-                    }
                     charBox.innerHTML = `
       <div class="charBox rounded-4xl">
             <div class="rounded-3xl">
@@ -56,7 +52,7 @@ const getDataChar = async (name) => {
                             ${trimName}
                             </span>
                             <span class="mid foot-semibold">
-                                ${realRace[0]} ${char.gender} ${realAge[0]}
+                                ${realRace[0]} ${char.gender} ${char.age}
                             </span>
                             <div class="bot">
                                 <span>
@@ -121,6 +117,12 @@ const getData = async () => {
             <span class="name mx-4 font-semibold skeleton">${c.name}</span>
             <span class="id bg-neutral-800 text-neutral-50 rounded-full flex justify-center items-center p-2 skeleton">
             ${c.id}</span>
+            <button type="button" class="btnmale p-3 rounded-full shadow-sm" onclick='addFav("${c.name}")'>
+                                    <i class="bi bi-heart"></i>
+                                    <span>
+                                        Favorite
+                                    </span>
+                                </button>
             <span class="arc mx-4 font-light arc skeleton">ARC ${c.arc_id}</span>
             </div>
             `
@@ -148,8 +150,19 @@ closeBtn.forEach((btn) => {
     })
 })
 const addFav = (name) => {
-    favChar.push(name)
-    localStorage.setItem("favChar", JSON.stringify(favChar))
+    if(!favChar.includes(name)){
+        favChar.push(name)
+        let strChar = JSON.stringify(favChar)
+        localStorage.setItem("favChar",strChar)   
+    }else{
+        console.log("Karakter sudah ada")
+    }
+}
+const apcb = () => {
+    console.log(JSON.parse(localStorage.getItem("favChar")))
+}
+const clearlocal = () => {
+    localStorage.removeItem("favChar")
 }
 charBox.addEventListener("click", (e) => {
     if (e.target.className.includes('bi-x')) {

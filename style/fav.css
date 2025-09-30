@@ -1,0 +1,73 @@
+:root {
+    --light-blue: #E2F3F4;
+    --dark-blue: #6DC7D1;
+    --light-pink: #FFDAFC;
+    --dark-pink: #F991CC;
+    --low: #000000;
+    --dreamy: #EAEBED;
+}
+body{
+    font-family: 'Raleway';
+    overflow-x: hidden;
+}
+#fetchLoading{
+    width: 80dvh;
+    height: 80dvh;
+    background-color: rgba(255, 255, 254, .6);
+    backdrop-filter: blur(4px);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+#errMsg{
+    display: none   ;
+}
+.detail{
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+    left: -30%;
+    opacity: 0;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.result:hover > .detail {
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    opacity: 100;
+    left: 0;
+}
+.detail:hover{
+    opacity: .6;
+}
+footer .navBtn{
+    cursor: pointer;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+footer .hovBtn:hover{
+    background-color: var(--light-blue);
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+  height: .5rem;
+  margin-bottom: 1rem;
+  --c:no-repeat linear-gradient( #6DC7D1 0 0);
+  background: var(--c),var(--c),var(--light-blue);
+  background-size: 60% 100%;
+  animation: l16 3s infinite;
+}
+@keyframes l16 {
+  0%   {background-position:-150% 0,-150% 0}
+  66%  {background-position: 250% 0,-150% 0}
+  100% {background-position: 250% 0, 250% 0}
+}
+@media (max-width:720px) {
+    #fetchLoading{
+        width: 80dvw;
+        height: 80dvw;
+    }
+    .detail{
+        left: 0 !important;
+        opacity: 1;
+    }
+}

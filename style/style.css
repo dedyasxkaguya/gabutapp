@@ -6,7 +6,9 @@
     --low: #000000;
     --dreamy: #EAEBED;
 }
-
+body{
+    font-family: 'Raleway';
+}
 .skeleton {
     background-color: lightgray !important;
     color: lightgray !important;
@@ -30,7 +32,6 @@ nav {
     cursor: pointer;
     display: flex;
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-
 }
 
 .imgBoxmale {
@@ -165,6 +166,7 @@ nav {
 .shareBtnfemale {
     background-color: var(--dark-pink);
 }
+/* Special */
 
 footer {
     position: fixed;
@@ -176,7 +178,7 @@ footer {
 
 footer .active {
     background-color: var(--dark-blue);
-    color: var(--dreamy);
+    color: white;
 }
 
 .result img:hover {
