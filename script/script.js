@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", function () {
         el.classList.remove("skeleton")
     })
 })
+const fetchLoad = document.getElementById("fetchLoad")
 const closeBtn = document.querySelectorAll(".closeBtn")
 const charBox = document.getElementById("charBox")
 const res = document.getElementById("resultBox")
@@ -22,6 +23,7 @@ const getDataChar = async (name) => {
     `
     console.log('pending')
     console.log(`https://demon-slayer-api.onrender.com/v1/${name}`)
+    fetchLoad.style.display='flex'
     try {
         fetch(`https://demon-slayer-api.onrender.com/v1/${name}`)
             .then(response => response.json())
@@ -37,7 +39,7 @@ const getDataChar = async (name) => {
                     let realImg = char.image.split('.png/')
 
                     let realRace = char.race.split(" ")
-
+                    fetchLoad.style.display='none'
                     charBox.innerHTML = `
       <div class="charBox rounded-4xl">
             <div class="rounded-3xl">
@@ -144,6 +146,7 @@ closeBtn.forEach((btn) => {
     })
 })
 const addFav = (name) => {
+    event.target.parentElement.classList.add("male")
     if(!favChar.includes(name)){
         favChar.push(name)
         let strChar = JSON.stringify(favChar)

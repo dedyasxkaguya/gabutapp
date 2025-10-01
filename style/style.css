@@ -6,10 +6,12 @@
     --low: #000000;
     --dreamy: #EAEBED;
 }
-body{
+
+body {
     font-family: 'Raleway';
     margin-bottom: 10rem;
 }
+
 .skeleton {
     background-color: lightgray !important;
     color: lightgray !important;
@@ -21,12 +23,25 @@ nav {
     color: var(--dreamy);
 }
 
-#search {
-    background-color: var(--dreamy);
-    width: 75dvw;    
+#fetchLoad {
+    position: fixed;
+    background-color: rgba(255, 255, 255, .6);
+    backdrop-filter: blur(4px);
+    width: 50dvh;
+    height: 50dvh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
 }
 
-.result , .detailCard{
+#search {
+    background-color: var(--dreamy);
+    width: 75dvw;
+}
+
+.result,
+.detailCard {
     width: 75dvw;
     height: fit-content;
     font-size: 2rem;
@@ -34,29 +49,36 @@ nav {
     display: flex;
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-.cardBox{
+
+.cardBox {
     max-width: 75dvw;
 }
-.detailCard{
+
+.detailCard {
     font-size: .8rem;
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-.detailCard , .status{
+
+.detailCard,
+.status {
     max-width: 90dvw;
     display: none;
 }
-.detailImg{
+
+.detailImg {
     min-width: 40%;
     max-height: 80%;
-    filter: drop-shadow(2px 4px 4px );
+    filter: drop-shadow(2px 4px 4px);
     image-rendering: optimizeQuality;
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    
+
 }
-.detailImg:hover{
+
+.detailImg:hover {
     scale: 1.08;
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
 .imgBoxmale {
     background-color: var(--dark-blue);
     overflow: hidden;
@@ -94,6 +116,7 @@ nav {
     color: var(--low);
     backdrop-filter: blur(4px);
 }
+
 .charBox {
     /* background-color: var(--dreamy); */
     background-color: rgba(255, 255, 255, .6);
@@ -189,6 +212,7 @@ nav {
 .shareBtnfemale {
     background-color: var(--dark-pink);
 }
+
 /* Special */
 
 footer {
@@ -214,20 +238,29 @@ footer .active {
     scale: 1.05;
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
 @keyframes show {
-    to{
+    to {
         opacity: 1;
         top: 50%;
     }
 }
+
 /* @media (max-width:1080px) {
     
 } */
 @media (max-width:720px) {
-    .detailCard , .cardBox, .result {
+    #fetchLoad{
+        width: 50dvw;
+        height: 50dvw;
+    }
+    .detailCard,
+    .cardBox,
+    .result {
         min-width: 90dvw;
         max-width: 90dvw;
     }
+
     .result {
         font-size: 1rem;
         justify-content: space-between;
@@ -256,24 +289,31 @@ footer .active {
     .right {
         width: 100%;
     }
-    .detailCard{
+
+    .detailCard {
         flex-direction: column;
     }
-    .detailImg img{
+
+    .detailImg img {
         max-height: 24dvh;
     }
-    .statusNone{
+
+    .statusNone {
         display: none !important;
     }
-    .rightBox{
+
+    .rightBox {
         min-width: 80dvw;
     }
-    .actionBtn span{
+
+    .actionBtn span {
         display: none;
     }
-    .actionBtn button{
+
+    .actionBtn button {
         width: 3rem;
     }
+
     .left .male {
         width: 100%;
     }
@@ -284,5 +324,30 @@ footer .active {
 
     .quote {
         font-size: .8rem;
+    }
+}
+
+.loader {
+    width: fit-content;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 30px;
+    background: linear-gradient(135deg, #0000 calc(50% - 0.5em), #000 0 calc(50% + 0.5em), #0000 0) right/300% 100%;
+    animation: l22 2s infinite;
+}
+
+.loader::before {
+    content: "Loading...";
+    color: #0000;
+    padding: 0 5px;
+    background: inherit;
+    background-image: linear-gradient(135deg, #000 calc(50% - 0.5em), #fff 0 calc(50% + 0.5em), #000 0);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@keyframes l22 {
+    100% {
+        background-position: left
     }
 }
