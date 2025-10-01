@@ -117,12 +117,6 @@ const getData = async () => {
             <span class="name mx-4 font-semibold skeleton">${c.name}</span>
             <span class="id bg-neutral-800 text-neutral-50 rounded-full flex justify-center items-center p-2 skeleton">
             ${c.id}</span>
-            <button type="button" class="btnmale p-3 rounded-full shadow-sm" onclick='addFav("${c.name}")'>
-                                    <i class="bi bi-heart"></i>
-                                    <span>
-                                        Favorite
-                                    </span>
-                                </button>
             <span class="arc mx-4 font-light arc skeleton">ARC ${c.arc_id}</span>
             </div>
             `

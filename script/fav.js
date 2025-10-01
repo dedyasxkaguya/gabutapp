@@ -30,26 +30,74 @@ const getData = async (el) => {
             <i id="${cardId}" class="bi bi-search"></i>
             </span>
             </div>
+            <div class="cardBox ${c.gender.toLowerCase()} rounded-3xl shadow-lg">
             <div class=" ${cardId}
-            detailCard ${c.gender.toLowerCase()} p-3 rounded-3xl items-center shadow noBetween">
+            detailCard p-3 items-center noBetween">
                 <div class="detailImg m-4">
                 <img src="${realImg[0]}.png" alt="">
                 </div>
                 <div class="relatives flex flex-col">
                 <span class="name text-xl4 font-semibold">${c.name}</span>
-                <span class="font-semibold capitalize">race: ${c.race}<br>
-                <span class="font-semibold capitalize">gender : ${c.gender}<br>
-                <span class="font-semibold capitalize">age : ${c.age}<br>
-                <span class="font-semibold capitalize">height : ${c.height}<br>
-                <span class="font-semibold capitalize">weight : ${c.weight}<br>
-                <span class="font-semibold capitalize">birthday : ${c.birthday}<br>
-                <span class="font-semibold capitalize">hair color : ${c['hair color']}<br>
-                <span class="font-semibold capitalize">eye color  : ${c['eye color ']}<br>
-                <span class="font-semibold capitalize">affiliation : ${c.affiliation}<br>
-                <span class="font-semibold capitalize">combat style : ${c['combat style']}<br>
-                <span class="font-semibold capitalize">partner(s) : ${c['partner(s)']}<br>
+                <div>
+                <span class="font-semibold capitalize">race:</span> ${c.race}
                 </div>
+                <div>
+                <span class="font-semibold capitalize">gender :</span> ${c.gender}
+                </div>
+                <div>
+                <span class="font-semibold capitalize">age :</span> ${c.age}
+                </div>
+                <div>
+                <span class="font-semibold capitalize">height :</span> ${c.height}
+                </div>
+                <div>
+                <span class="font-semibold capitalize">weight :</span> ${c.weight}
+                </div>
+                <div>
+                <span class="font-semibold capitalize">birthday :</span> ${c.birthday}
+                </div>
+                <div>
+                <span class="font-semibold capitalize">hair color :</span> ${c['hair color']}
+                </div>
+                <div>
+                <span class="font-semibold capitalize">eye color  :</span> ${c['eye color ']}
+                </div>
+                <div>
+                <span class="font-semibold capitalize">affiliation :</span> ${c.affiliation}
+                </div>
+                <div>
+                <span class="font-semibold capitalize">combat style :</span> ${c['combat style']}
+                </div>
+                <div>
+                <span class="font-semibold capitalize">partner(s) : </span> ${c['partner(s)']}
+                </div>
+                </div>
+                </div>
+                <div class="status status${cardId} p-3 m-3 statusNone">
+                <ul>
+                <li>
+                <span class=" font-semibold capitalize">status</span>: Active (Pre-Timeskip)  Deceased (Post-Timeskip)
+                </li>
+                <li>
+                <span class="font-semibold capitalize">manga debut</span>: 
+                Chapter 1 
+                </li>
+                <li>
+                <span class="font-semibold capitalize">anime debut</span>: 
+                Episode 1 
+                </li>
+                <li>
+                <span class="font-semibold capitalize">Japanese VA</span>: 
+                Akari Kito
+                </li>
+                <li>
+                <span class="font-semibold capitalize">English VA</span>: 
+                Abby Trott
+                </li>
+                </ul>
             </div>
+            </div>
+                
             `
             })
             console.log('Completed Fetching ' + el)
@@ -64,10 +112,15 @@ const getData = async (el) => {
                             document.querySelectorAll(".detailCard").forEach((e)=>{
                                 e.style.display='none'
                             })
+                            document.querySelectorAll(".status").forEach((e)=>{
+                                e.style.display='none'
+                            })
                             document.querySelector(`.${e.target.id}`).style.display='flex'
+                            document.querySelector(`.status${e.target.id}`).style.display='flex'
                             isHeight = true
                         } else {
                             document.querySelector(`.${e.target.id}`).style.display='none'
+                            document.querySelector(`.status${e.target.id}`).style.display='none'
                             isHeight = false
                         }
                     }

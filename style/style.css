@@ -8,6 +8,7 @@
 }
 body{
     font-family: 'Raleway';
+    margin-bottom: 10rem;
 }
 .skeleton {
     background-color: lightgray !important;
@@ -22,7 +23,7 @@ nav {
 
 #search {
     background-color: var(--dreamy);
-    width: 75dvw;
+    width: 75dvw;    
 }
 
 .result , .detailCard{
@@ -33,10 +34,16 @@ nav {
     display: flex;
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+.cardBox{
+    max-width: 75dvw;
+}
 .detailCard{
-    /* display: none; */
     font-size: .8rem;
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.detailCard , .status{
+    max-width: 90dvw;
+    display: none;
 }
 .detailImg{
     min-width: 40%;
@@ -213,9 +220,13 @@ footer .active {
         top: 50%;
     }
 }
-@media (max-width:1080px) {
-    .detailCard , .result {
-        width: 90dvw;
+/* @media (max-width:1080px) {
+    
+} */
+@media (max-width:720px) {
+    .detailCard , .cardBox, .result {
+        min-width: 90dvw;
+        max-width: 90dvw;
     }
     .result {
         font-size: 1rem;
@@ -247,6 +258,12 @@ footer .active {
     }
     .detailCard{
         flex-direction: column;
+    }
+    .detailImg img{
+        max-height: 24dvh;
+    }
+    .statusNone{
+        display: none !important;
     }
     .rightBox{
         min-width: 80dvw;
