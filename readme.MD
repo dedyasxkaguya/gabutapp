@@ -1,10 +1,4 @@
-Tentu, berikut adalah draf file `README.md` yang bagus berdasarkan kode HTML dan JavaScript yang Anda berikan.
 
-Saya berasumsi nama proyeknya adalah **"Gabut KNY App"** atau semacamnya, karena navigasi menampilkan "Gabut App by dedyas" dan fungsi utamanya adalah mencari karakter *Kimetsu no Yaiba* (KNY).
-
-Anda dapat menyalin teks di bawah ini dan menyimpannya sebagai `README.md`.
-
-````markdown
 # 🦋 Gabut KNY App
 
 Aplikasi web sederhana untuk mencari dan melihat detail karakter dari anime/manga **Kimetsu no Yaiba (Demon Slayer)**. Proyek ini dibangun dengan fokus pada UI/UX yang responsif menggunakan **Tailwind CSS**.
