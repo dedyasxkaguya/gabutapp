@@ -25,7 +25,7 @@ nav {
     width: 75dvw;
 }
 
-.result {
+.result , .detailCard{
     width: 75dvw;
     height: fit-content;
     font-size: 2rem;
@@ -33,7 +33,23 @@ nav {
     display: flex;
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-
+.detailCard{
+    /* display: none; */
+    font-size: .8rem;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.detailImg{
+    min-width: 40%;
+    max-height: 80%;
+    filter: drop-shadow(2px 4px 4px );
+    image-rendering: optimizeQuality;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    
+}
+.detailImg:hover{
+    scale: 1.08;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 .imgBoxmale {
     background-color: var(--dark-blue);
     overflow: hidden;
@@ -198,6 +214,9 @@ footer .active {
     }
 }
 @media (max-width:1080px) {
+    .detailCard , .result {
+        width: 90dvw;
+    }
     .result {
         font-size: 1rem;
         justify-content: space-between;
@@ -225,6 +244,9 @@ footer .active {
     .left,
     .right {
         width: 100%;
+    }
+    .detailCard{
+        flex-direction: column;
     }
     .rightBox{
         min-width: 80dvw;
